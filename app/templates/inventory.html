@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block styles %}
+    {{super()}}
+    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.material.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css">
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="container" width="80%">
+        <table id="table_id" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width:100%">
+    </div>
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous{% if not prev_url %} disabled{% endif %}">
+                <a href="{{ prev_url or '#' }}">
+                    <span aria-hidden="true">&larr;</span> Newer posts
+                </a>
+            </li>
+            <li class="next{% if not next_url %} disabled{% endif %}">
+                <a href="{{ next_url or '#' }}">
+                    Older posts <span aria-hidden="true">&rarr;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+{% endblock %}
+
+{% block scripts %}
+
+{{ super() }}
+<script>
+    $(document).ready( function () {
+    $('#table_id').DataTable({
+        responsive: true,
+        data:  {{ inventoryJSON2 | safe }},
+        columns: [
+            { data: "quantity", title: "Quantity", width: "20px"},
+            { data: "description", 
+                title: "Description", 
+                width: "40px" ,
+                render: function(data, type, row){
+                    return data = '<a href="' + data
+                }
+                
+            },
+            { data: "price", title: "Price" },
+            { data: "store", title: "Store" },
+            { data: "address", title: "Store Address" },
+            { data: "phone", title: "Store Phone #" },
+            { data: "size", title: "Size" },
+            { data: "wtype", title: "Type" },
+            { data: "brand", title: "Brand" },
+            { data: "sku", title: "SKU"},
+            { data: "link", title: "MeckABC Link"}
+        ],
+        language: {
+            searchPlaceholder: "Search Inventory",
+            search: ""
+        }
+        
+    })
+    } );
+</script>
+{% endblock %}
+
+
