@@ -13,7 +13,7 @@ import subprocess
 from subprocess import Popen, PIPE
 import abcstore
 
-'''
+
 import atexit
 from apscheduler.scheduler import Scheduler
 
@@ -27,6 +27,7 @@ def ABCDataUpdate():
     #urlsTest = ["https://www.meckabc.com/Products/Product-Search?d=gin&c="]
     urls = ["https://www.google.com"]
     executionTime = datetime.utcnow()
+    print(urls)
     print('Starting up...... Transfer Data: ' + str(executionTime))
     try:
         abcstore.transferData()
@@ -42,12 +43,15 @@ def ABCDataUpdate():
         abcstore.updateLastUpdate(executionTime)
     except:
         print('Last Update Failed')
+    
     completeTime = datetime.utcnow()
     timetaken = completeTime - executionTime
     print('Complete: ' + str(completeTime) + ' took this long: ' + str(timetaken) )
 
 atexit.register(lambda: cron.shutdown(wait=False))
-'''
+
+print(cron.get_jobs())
+
 
 @app.before_request
 def before_request():
@@ -134,18 +138,23 @@ def explore():
     return render_template('index.html', title='Explore', posts=posts.items,
                            next_url=next_url, prev_url=prev_url)
 
-'''
-@app.route('/dashboard')
-@login_required()
-'''
-def dashboard():
-    print('dashboard')
+
+@app.route('/admin', methods=['GET','POST'])
+@login_required
+def admin():
+    if current_user.username == 'sankeerth':
+        print('Executing the update database scripts')
+        ABCDataUpdate()
+        return render_template('admin.html')
+    else:
+        return render_template('404.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         loginrecord = UserLogins(loginauthor=current_user)
-        db.session.add(post)
+        db.session.add(loginrecord)
         db.session.commit()
         return redirect(url_for('index'))
     form = LoginForm()
@@ -159,7 +168,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         loginrecord = UserLogins(loginauthor=current_user)
-        db.session.add(post)
+        db.session.add(loginrecord)
         db.session.commit()
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)

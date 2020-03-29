@@ -110,7 +110,3 @@ def updateLastUpdate(executionTime):
 	lastUpdate = LastUpdate(recordcount=Inventory.query.count(), datestamp=executionTime)
 	db.session.add(lastUpdate)
 	db.session.commit()
-
-
-
-

@@ -35,3 +35,61 @@
 2020-03-29 11:14:23,660 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
 2020-03-29 11:42:15,738 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
 2020-03-29 11:42:24,774 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 11:54:04,154 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 11:55:23,785 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 11:55:45,956 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 11:57:14,602 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 11:59:43,894 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:01:06,448 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:01:30,085 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:02:20,179 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:05:25,885 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:09:32,549 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:09:54,846 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:10:09,096 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:11:21,186 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:12:04,849 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:12:31,800 ERROR: Exception on /login [POST] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\main.py", line 172, in login
+    db.session.add(post)
+NameError: name 'post' is not defined
+2020-03-29 12:12:59,568 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:13:17,914 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:15:31,212 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:16:29,687 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:17:04,788 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:17:41,167 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:17:47,813 ERROR: Exception on /admin [GET] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\main.py", line 150, in admin
+    wait(10)
+NameError: name 'wait' is not defined
+2020-03-29 12:18:23,535 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 12:18:47,700 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
