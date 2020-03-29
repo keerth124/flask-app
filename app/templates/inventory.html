@@ -1,33 +1,30 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
 {% block styles %}
     {{super()}}
     
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.material.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 {% endblock %}
 
 
 
-{% block content %}
-
-    <div class="container" width="80%">
-        <table id="table_id" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width:100%">
+{% block app_content %}
+    {% if updateTime %}
+    <div class="mdl-grid">
+        <p>Last updated on: <b>{{ moment(updateTime).format('LLL') }}</b></p>
     </div>
-    <nav aria-label="...">
-        <ul class="pager">
-            <li class="previous{% if not prev_url %} disabled{% endif %}">
-                <a href="{{ prev_url or '#' }}">
-                    <span aria-hidden="true">&larr;</span> Newer posts
-                </a>
-            </li>
-            <li class="next{% if not next_url %} disabled{% endif %}">
-                <a href="{{ next_url or '#' }}">
-                    Older posts <span aria-hidden="true">&rarr;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    {% endif %}
+    <div class="input-group mx-auto" display="table">
+        {% if form %}
+        {{ wtf.quick_form(form) }}
+        {% endif %}
+    </div>
+    <br>
+    <table id="table_id" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width:100%">
 
 {% endblock %}
 
@@ -37,18 +34,12 @@
 <script>
     $(document).ready( function () {
     $('#table_id').DataTable({
+        dom: '<"top"f>Bt<"bottom"lip>r',
         responsive: true,
-        data:  {{ inventoryJSON2 | safe }},
+        data:  {{ inventoryJSON | safe }},
         columns: [
-            { data: "quantity", title: "Quantity", width: "20px"},
-            { data: "description", 
-                title: "Description", 
-                width: "40px" ,
-                render: function(data, type, row){
-                    return data = '<a href="' + data
-                }
-                
-            },
+            { data: "description", title: "Description"},
+            { data: "quantity", title: "Quantity"},
             { data: "price", title: "Price" },
             { data: "store", title: "Store" },
             { data: "address", title: "Store Address" },
@@ -57,12 +48,19 @@
             { data: "wtype", title: "Type" },
             { data: "brand", title: "Brand" },
             { data: "sku", title: "SKU"},
-            { data: "link", title: "MeckABC Link"}
+            { data: "link", title: "MeckABC Link",
+                render: function(data){
+                    data = '<a href="' + data + '">Click Here</a>';
+                return data;
+                }
+            }
         ],
+        order: [[ 2, "desc" ]],
         language: {
             searchPlaceholder: "Search Inventory",
-            search: ""
-        }
+            search: "",
+        },
+        pagingType: "simple"
         
     })
     } );

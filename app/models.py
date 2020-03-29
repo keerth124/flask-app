@@ -14,6 +14,10 @@ followers = db.Table(
     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
 )
 
+class UserLogins(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    login_date = db.Column(db.DateTime, default=datetime.utcnow)
 
 
 class User(UserMixin, db.Model):
@@ -22,6 +26,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
+    logins = db.relationship('UserLogins', backref='loginauthor', lazy='dynamic')
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     followed = db.relationship(
@@ -102,14 +107,39 @@ class Inventory(db.Model):
     size = db.Column(db.String(64))
     price = db.Column(db.String(64))
     link = db.Column(db.String(256))
-    store = db.Column(db.String(128))
+    store = db.Column(db.String(128), index=True)
     quantity = db.Column(db.String(128))
-    address = db.Column(db.String(256))
+    address = db.Column(db.String(256), index=True)
     phone = db.Column(db.String(64))
+    insertTime = db.Column(db.DateTime, index=True)
 
 
     def __repr__(self):
-        return '<Inventory {}>'.format(self.description)
+        return '<Inventory {}>'.format(self.id)
+
+class DataHistory(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    datadatetime = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    sku = db.Column(db.String(64), index=True)
+    wtype = db.Column(db.String(128), index=True)
+    description = db.Column(db.String(256))
+    size = db.Column(db.String(64))
+    price = db.Column(db.String(64))
+    store = db.Column(db.String(128), index=True)
+    quantity = db.Column(db.String(128))
+    address = db.Column(db.String(256), index=True) 
+
+    def __repr__(self):
+        return '<DataHistory {}>'.format(self.id)
+
+class LastUpdate(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    recordcount = db.Column(db.Integer)
+    datestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    completionTime = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    
+    def __repr__(self):
+        return '<LastUpdate {}>'.format(self.id)
 
 class InventorySchema(ma.ModelSchema):
     class Meta:

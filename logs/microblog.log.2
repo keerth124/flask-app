@@ -1,4 +1,4 @@
-2020-03-23 23:27:06,660 ERROR: Exception on /Inventory [GET] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
+2020-03-28 14:49:22,452 ERROR: Exception on /Inventory [GET] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,36 +14,10 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\sgoli\Documents\flask-app\app\routes.py", line 53, in inventory
-    return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\templating.py", line 140, in render_template
-    ctx.app,
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\templating.py", line 120, in _render
-    rv = template.render(context)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\sgoli\Documents\flask-app\app\templates\inventory.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\sgoli\Documents\flask-app\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 3, in block "doc"
-    <html{% block html_attribs %}{% endblock html_attribs %}>
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 11, in block "html"
-    {%- endblock metas %}
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 13, in block "body"
-    {%- block styles %}
-  File "C:\Users\sgoli\Documents\flask-app\app\templates\inventory.html", line 16, in block "content"
-    {{ inventoryJSON }}
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\markupsafe\__init__.py", line 74, in __new__
-    return text_type.__new__(cls, base)
-MemoryError
-2020-03-23 23:28:03,281 ERROR: Exception on /Inventory [GET] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
+  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\routes.py", line 63, in inventory
+    return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON, updateTime=updateTime.completiontime)
+AttributeError: 'LastUpdate' object has no attribute 'completiontime'
+2020-03-28 14:49:25,753 ERROR: Exception on /Inventory [GET] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -59,62 +33,53 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\sgoli\Documents\flask-app\app\routes.py", line 53, in inventory
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\templating.py", line 140, in render_template
-    ctx.app,
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\templating.py", line 120, in _render
-    rv = template.render(context)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\sgoli\Documents\flask-app\app\templates\inventory.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\sgoli\Documents\flask-app\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 3, in block "doc"
-    <html{% block html_attribs %}{% endblock html_attribs %}>
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 11, in block "html"
-    {%- endblock metas %}
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 13, in block "body"
-    {%- block styles %}
-  File "C:\Users\sgoli\Documents\flask-app\app\templates\inventory.html", line 16, in block "content"
-    </p>
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\markupsafe\__init__.py", line 74, in __new__
-    return text_type.__new__(cls, base)
-MemoryError
-2020-03-23 23:28:29,457 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-23 23:29:11,153 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-23 23:33:53,919 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-23 23:41:27,629 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-23 23:45:13,387 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-23 23:45:28,556 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-23 23:45:44,273 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-23 23:46:05,975 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-23 23:51:02,605 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-23 23:53:05,987 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-23 23:54:30,651 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-23 23:59:31,427 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 00:00:11,702 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 00:01:29,906 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 00:03:21,743 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 00:08:00,075 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 00:09:00,987 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 00:09:43,957 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 00:10:10,768 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 00:10:49,581 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 00:12:59,957 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 00:13:46,932 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 00:14:42,415 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 00:15:58,778 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 00:16:52,540 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 10:08:40,027 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 10:15:00,948 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 10:18:58,767 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 10:19:44,398 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 10:26:33,238 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 10:27:04,758 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
+  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\routes.py", line 63, in inventory
+    return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON, updateTime=updateTime.completiontime)
+AttributeError: 'LastUpdate' object has no attribute 'completiontime'
+2020-03-28 14:50:51,030 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 14:51:02,258 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 14:52:29,541 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 15:07:58,116 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 15:12:35,211 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 15:13:26,995 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 15:15:51,040 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 15:17:11,965 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 15:17:27,875 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 15:18:41,353 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 15:33:56,991 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 15:46:48,138 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 15:51:09,320 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 15:58:55,124 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:07:53,812 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:11:34,884 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:12:26,389 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:16:00,204 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:17:03,433 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:17:29,229 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:20:25,347 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:22:08,046 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:22:53,394 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:24:20,986 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:25:15,282 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:26:11,689 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:31:35,758 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:32:16,216 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:35:08,138 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:35:40,043 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:38:06,770 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:38:37,309 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:40:10,692 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:41:29,225 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:42:11,323 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:43:12,210 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:43:35,014 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:46:04,184 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:46:34,442 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:47:11,904 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:47:50,287 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:48:10,360 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:48:31,635 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:50:20,009 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:51:00,135 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 16:52:00,912 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 17:00:13,738 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
