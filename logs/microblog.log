@@ -65,3 +65,4 @@ AttributeError: 'NoneType' object has no attribute 'address'
 2020-03-29 09:30:10,560 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
 2020-03-29 09:30:17,285 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
 2020-03-29 09:36:43,297 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 09:37:20,625 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
