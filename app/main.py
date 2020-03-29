@@ -12,6 +12,8 @@ from datatables import DataTables
 import subprocess
 from subprocess import Popen, PIPE
 import abcstore
+
+'''
 import atexit
 from apscheduler.scheduler import Scheduler
 
@@ -45,7 +47,7 @@ def ABCDataUpdate():
     print('Complete: ' + str(completeTime) + ' took this long: ' + str(timetaken) )
 
 atexit.register(lambda: cron.shutdown(wait=False))
-
+'''
 
 @app.before_request
 def before_request():
@@ -118,67 +120,6 @@ def inventory():
     inventory_schema = InventorySchema(many=True)
     inventoryJSON = json.dumps(inventory_schema.dump(inventory))
     return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON, updateTime=updateTime.completionTime, form=form)
-
-'''
-updateTime = LastUpdate.query.order_by(LastUpdate.completionTime.desc()).first()
-    inventory_schema = InventorySchema(many=True)
-    inventory = Inventory.query.all()
-    if request.method == 'POST':
-        if request.form.get('bourbon') == 'Only Bourbon':
-            inventory = Inventory.query.filter(Inventory.wtype=='Bourbon / Rye Whisky')
-        elif request.form.get('scotch'):
-            inventory = Inventory.query.filter(Inventory.wtype.contains('Scotch'))
-
-    inventoryJSON = json.dumps(inventory_schema.dump(inventory))
-    return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON, updateTime=updateTime.completionTime)
-'''
-
-
-'''@app.route('/Inventory',methods=['GET', 'POST'])
-@login_required
-def inventory():
-    #inventory = Inventory.query.filter(Inventory.description=='Old Forester 1920')
-    page = request.args.get('filter', 1, type=str)
-    print(page)
-    if page == 1 or page == 'all':
-        inventory = Inventory.query.all()
-        inventory_schema = InventorySchema(many=True)
-        inventoryJSON = json.dumps(inventory_schema.dump(inventory))
-        return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON)
-    elif page == 'bourbon':
-        inventory = Inventory.query.filter(Inventory.wtype=='Bourbon / Rye Whisky')
-        inventory_schema = InventorySchema(many=True)
-        inventoryJSON = json.dumps(inventory_schema.dump(inventory))
-        return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON)
-    elif page == 'scotch':
-        inventory = Inventory.query.filter(Inventory.wtype=='Bourbon / Rye Whisky')
-        inventory_schema = InventorySchema(many=True)
-        inventoryJSON = json.dumps(inventory_schema.dump(inventory))
-        return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON)
-    else:
-        return render_template('404.html')
-'''       
-
-
-
-''' tables with sqlalchemy paginate options (25)
-@app.route('/Inventory',methods=['GET', 'POST'])
-@login_required
-def inventory():
-    inventory = Inventory.query.all()
-
-    inventory_schema = InventorySchema(many=True)
-    inventoryJSON = json.dumps(inventory_schema.dump(inventory))
-    page = request.args.get('page', 1, type=int)
-    pageInventory = Inventory.query.paginate(page, app.config['POSTS_PER_PAGE'], False)
-
-    inventoryJSON2 = json.dumps(inventory_schema.dump(pageInventory.items))
-
-    next_url = url_for('inventory', page=pageInventory.next_num) if pageInventory.has_next else None
-    prev_url = url_for('inventory', page=pageInventory.prev_num) if pageInventory.has_next else None
-
-    return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON, pageInventory=pageInventory.items, next_url=next_url, prev_url=prev_url, inventoryJSON2=inventoryJSON2)
-'''
 
 @app.route('/explore')
 @login_required
