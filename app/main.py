@@ -9,6 +9,49 @@ from app.models import User, Post, Inventory, InventorySchema, LastUpdate, UserL
 from app.email import send_password_reset_email
 import json
 from datatables import DataTables
+import subprocess
+from subprocess import Popen, PIPE
+import abcstore
+
+
+import atexit
+from apscheduler.scheduler import Scheduler
+
+cron = Scheduler(daemon=True)
+cron.start()
+
+@cron.cron_schedule(day_of_week='mon-fri', hour='10', minute='15')
+def ABCDataUpdate():
+    # Scotch, Bourbon, Gin, Tequila, Irish Whisky
+    #urls = ["https://www.meckabc.com/Products/Product-Search?d=scotch&c=","https://www.meckabc.com/Products/Product-Search?d=bourbon&c=","https://www.meckabc.com/Products/Product-Search?d=gin&c=","https://www.meckabc.com/Products/Product-Search?d=tequila&c=", "https://www.meckabc.com/Products/Product-Search?d=Irish+Whisky&c="]
+    #urlsTest = ["https://www.meckabc.com/Products/Product-Search?d=gin&c="]
+    urls = ["https://www.google.com"]
+    executionTime = datetime.utcnow()
+    print(urls)
+    print('Starting up...... Transfer Data: ' + str(executionTime))
+    try:
+        abcstore.transferData()
+    except: 
+        print('Transfer Data Failed')
+    print('Transfer Data done at: ' + str(datetime.utcnow()) + ' Updating Inventory now...........')
+    try:
+        abcstore.updateInventory(urls, executionTime)
+    except:
+        print('Update Inventory Failed')
+    print('Inventory Data done at: ' + str(datetime.utcnow()) + ' Updating LastUpdate now...........')
+    try:
+        abcstore.updateLastUpdate(executionTime)
+    except:
+        print('Last Update Failed')
+    
+    completeTime = datetime.utcnow()
+    timetaken = completeTime - executionTime
+    print('Complete: ' + str(completeTime) + ' took this long: ' + str(timetaken) )
+
+atexit.register(lambda: cron.shutdown(wait=False))
+
+print(cron.get_jobs())
+
 
 @app.before_request
 def before_request():
@@ -82,67 +125,6 @@ def inventory():
     inventoryJSON = json.dumps(inventory_schema.dump(inventory))
     return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON, updateTime=updateTime.completionTime, form=form)
 
-'''
-updateTime = LastUpdate.query.order_by(LastUpdate.completionTime.desc()).first()
-    inventory_schema = InventorySchema(many=True)
-    inventory = Inventory.query.all()
-    if request.method == 'POST':
-        if request.form.get('bourbon') == 'Only Bourbon':
-            inventory = Inventory.query.filter(Inventory.wtype=='Bourbon / Rye Whisky')
-        elif request.form.get('scotch'):
-            inventory = Inventory.query.filter(Inventory.wtype.contains('Scotch'))
-
-    inventoryJSON = json.dumps(inventory_schema.dump(inventory))
-    return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON, updateTime=updateTime.completionTime)
-'''
-
-
-'''@app.route('/Inventory',methods=['GET', 'POST'])
-@login_required
-def inventory():
-    #inventory = Inventory.query.filter(Inventory.description=='Old Forester 1920')
-    page = request.args.get('filter', 1, type=str)
-    print(page)
-    if page == 1 or page == 'all':
-        inventory = Inventory.query.all()
-        inventory_schema = InventorySchema(many=True)
-        inventoryJSON = json.dumps(inventory_schema.dump(inventory))
-        return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON)
-    elif page == 'bourbon':
-        inventory = Inventory.query.filter(Inventory.wtype=='Bourbon / Rye Whisky')
-        inventory_schema = InventorySchema(many=True)
-        inventoryJSON = json.dumps(inventory_schema.dump(inventory))
-        return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON)
-    elif page == 'scotch':
-        inventory = Inventory.query.filter(Inventory.wtype=='Bourbon / Rye Whisky')
-        inventory_schema = InventorySchema(many=True)
-        inventoryJSON = json.dumps(inventory_schema.dump(inventory))
-        return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON)
-    else:
-        return render_template('404.html')
-'''       
-
-
-
-''' tables with sqlalchemy paginate options (25)
-@app.route('/Inventory',methods=['GET', 'POST'])
-@login_required
-def inventory():
-    inventory = Inventory.query.all()
-
-    inventory_schema = InventorySchema(many=True)
-    inventoryJSON = json.dumps(inventory_schema.dump(inventory))
-    page = request.args.get('page', 1, type=int)
-    pageInventory = Inventory.query.paginate(page, app.config['POSTS_PER_PAGE'], False)
-
-    inventoryJSON2 = json.dumps(inventory_schema.dump(pageInventory.items))
-
-    next_url = url_for('inventory', page=pageInventory.next_num) if pageInventory.has_next else None
-    prev_url = url_for('inventory', page=pageInventory.prev_num) if pageInventory.has_next else None
-
-    return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON, pageInventory=pageInventory.items, next_url=next_url, prev_url=prev_url, inventoryJSON2=inventoryJSON2)
-'''
-
 @app.route('/explore')
 @login_required
 def explore():
@@ -156,18 +138,23 @@ def explore():
     return render_template('index.html', title='Explore', posts=posts.items,
                            next_url=next_url, prev_url=prev_url)
 
-'''
-@app.route('/dashboard')
-@login_required()
-'''
-def dashboard():
-    print('dashboard')
+
+@app.route('/admin', methods=['GET','POST'])
+@login_required
+def admin():
+    if current_user.username == 'sankeerth':
+        print('Executing the update database scripts')
+        ABCDataUpdate()
+        return render_template('admin.html')
+    else:
+        return render_template('404.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         loginrecord = UserLogins(loginauthor=current_user)
-        db.session.add(post)
+        db.session.add(loginrecord)
         db.session.commit()
         return redirect(url_for('index'))
     form = LoginForm()
@@ -181,7 +168,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         loginrecord = UserLogins(loginauthor=current_user)
-        db.session.add(post)
+        db.session.add(loginrecord)
         db.session.commit()
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)

@@ -110,18 +110,3 @@ def updateLastUpdate(executionTime):
 	lastUpdate = LastUpdate(recordcount=Inventory.query.count(), datestamp=executionTime)
 	db.session.add(lastUpdate)
 	db.session.commit()
-
-# Scotch, Bourbon, Gin, Tequila, Irish Whisky, Vodka
-urls = ["https://www.meckabc.com/Products/Product-Search?d=scotch&c=","https://www.meckabc.com/Products/Product-Search?d=bourbon&c=","https://www.meckabc.com/Products/Product-Search?d=gin&c=","https://www.meckabc.com/Products/Product-Search?d=tequila&c=", "https://www.meckabc.com/Products/Product-Search?d=Irish+Whisky&c=", "https://www.meckabc.com/Products/Product-Search?d=vodka&c="]
-executionTime = datetime.utcnow()
-print('Starting up...... Transfer Data: ' + str(executionTime))
-transferData()
-print('Transfer Data done at: ' + str(datetime.utcnow()) + ' Updating Inventory now...........')
-updateInventory(urls, executionTime)
-print('Inventory Data done at: ' + str(datetime.utcnow()) + ' Updating LastUpdate now...........')
-updateLastUpdate(executionTime)
-completeTime = datetime.utcnow()
-timetaken = completeTime - executionTime
-print('Complete: ' + str(completeTime) + ' took this long: ' + str(timetaken) )
-
-
