@@ -23,9 +23,9 @@ cron.start()
 @cron.cron_schedule(day_of_week='mon-fri', hour='10', minute='15')
 def ABCDataUpdate():
     # Scotch, Bourbon, Gin, Tequila, Irish Whisky
-    #urls = ["https://www.meckabc.com/Products/Product-Search?d=scotch&c=","https://www.meckabc.com/Products/Product-Search?d=bourbon&c=","https://www.meckabc.com/Products/Product-Search?d=gin&c=","https://www.meckabc.com/Products/Product-Search?d=tequila&c=", "https://www.meckabc.com/Products/Product-Search?d=Irish+Whisky&c="]
+    urls = ["https://www.meckabc.com/Products/Product-Search?d=scotch&c=","https://www.meckabc.com/Products/Product-Search?d=bourbon&c=","https://www.meckabc.com/Products/Product-Search?d=gin&c=","https://www.meckabc.com/Products/Product-Search?d=tequila&c=", "https://www.meckabc.com/Products/Product-Search?d=Irish+Whisky&c="]
     #urlsTest = ["https://www.meckabc.com/Products/Product-Search?d=gin&c="]
-    urls = ["https://www.google.com"]
+    #urls = ["https://www.google.com"]
     executionTime = datetime.utcnow()
     print(urls)
     print('Starting up...... Transfer Data: ' + str(executionTime))
