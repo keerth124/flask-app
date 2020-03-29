@@ -1,17 +1,4 @@
-2020-03-24 13:36:51,218 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 13:39:22,319 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 13:40:55,021 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 13:45:27,127 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 13:50:12,501 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 13:56:59,429 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 13:58:59,941 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 14:04:22,670 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 14:05:00,472 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 14:05:19,208 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 14:06:01,076 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 17:14:57,868 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 17:15:46,426 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 17:15:56,302 ERROR: Exception on /Inventory [GET] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
+2020-03-28 17:00:21,006 ERROR: Exception on /Inventory [GET] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -27,13 +14,45 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\sgoli\Documents\flask-app\app\routes.py", line 54, in inventory
-    pageInventory = inventory.paginate(page, app.config['POSTS_PER_PAGE'], False)
-AttributeError: 'list' object has no attribute 'paginate'
-2020-03-24 17:17:07,627 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 17:17:40,778 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 17:20:49,820 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-24 17:21:01,718 ERROR: Exception on /Inventory [GET] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
+  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\routes.py", line 80, in inventory
+    return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON, updateTime=updateTime.completionTime, value=value)
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\environment.py", line 930, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\environment.py", line 883, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\environment.py", line 857, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\loaders.py", line 129, in load
+    code = environment.compile(source, name, filename)
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\environment.py", line 638, in compile
+    self.handle_exception(source=source_hint)
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\templates\inventory.html", line 24, in template
+    <input type="submit" value="Bourbon" name="bourbon" class= {% if value == 'bourbon' %} "btn btn-primary" {% else %} "btn btn-default" {% end if %} padding-top="5px" padding-bottom="5px">
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'end'. Jinja was looking for the following tags: 'endif'. The innermost block that needs to be closed is 'if'.
+2020-03-28 17:00:32,856 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 17:01:24,067 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 17:02:26,541 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 18:06:20,795 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 18:07:19,630 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 18:08:49,997 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 18:39:38,325 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 18:50:20,164 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 18:50:54,554 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 18:51:14,970 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 18:51:34,058 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 18:51:54,349 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 18:53:13,784 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 18:54:24,082 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 19:03:48,120 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 19:11:36,074 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 19:22:08,976 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 19:22:25,163 ERROR: Exception on /Inventory [POST] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -49,18 +68,17 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\sgoli\Documents\flask-app\app\routes.py", line 57, in inventory
-    inventoryJSON2 = json.dumps(inventory_schema.dump(pageInventory))
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\marshmallow\schema.py", line 556, in dump
-    result = self._serialize(processed_obj, many=many)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\marshmallow\schema.py", line 516, in _serialize
-    for d in typing.cast(typing.Iterable[_T], obj)
-TypeError: 'Pagination' object is not iterable
-2020-03-24 17:22:08,610 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-25 09:53:44,600 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-25 09:54:17,242 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-25 12:41:40,198 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-25 12:41:56,165 ERROR: Exception on /TestPage [GET] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
+  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\routes.py", line 75, in inventory
+    return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON, updateTime=updateTime.completionTime, value=value, form=form)
+NameError: name 'value' is not defined
+2020-03-28 19:23:20,233 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 19:25:03,404 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 19:26:26,564 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 19:28:45,697 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 19:28:58,643 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 19:29:40,911 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 19:33:39,957 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 19:33:46,911 ERROR: Exception on /Inventory [POST] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -76,47 +94,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-TypeError: testpage() missing 1 required positional argument: 'request'
-2020-03-25 12:46:01,254 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-25 12:46:08,604 ERROR: Exception on /TestPage [GET] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
-Traceback (most recent call last):
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
-    raise value
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\sgoli\Documents\flask-app\app\routes.py", line 74, in testpage
-    inventoryJSON = json.dumps(inventory_schema.dump(pageInventory.items))
-NameError: name 'inventory_schema' is not defined
-2020-03-25 12:46:10,980 ERROR: Exception on /TestPage [GET] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
-Traceback (most recent call last):
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
-    raise value
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\sgoli\Documents\flask-app\app\routes.py", line 74, in testpage
-    inventoryJSON = json.dumps(inventory_schema.dump(pageInventory.items))
-NameError: name 'inventory_schema' is not defined
-2020-03-25 12:46:36,134 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-25 13:39:51,518 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-26 13:52:31,406 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
-2020-03-26 13:57:58,358 INFO: Microblog startup [in C:\Users\sgoli\Documents\flask-app\app\__init__.py:51]
+  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\routes.py", line 68, in inventory
+    storeAddress = Inventory.query.filter(Inventory.store.contains(forms.stores.data)).first()
+NameError: name 'forms' is not defined
+2020-03-28 19:33:57,281 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 19:34:50,683 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]

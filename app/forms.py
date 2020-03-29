@@ -1,9 +1,10 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, \
-    TextAreaField
+    TextAreaField, SelectField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, \
     Length
-from app.models import User
+from app.models import User, Inventory
+from app import db
 
 
 class LoginForm(FlaskForm):
@@ -12,6 +13,21 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
 
+
+
+class StoreForm(FlaskForm):
+    def getStores():
+        STORES_CHOICES = [('all','All Stores')]
+        results = db.session.query(Inventory.store, Inventory.address).distinct().order_by(Inventory.address.asc())
+        for result in results:
+            STORES_CHOICES.append((result.store, result.address))
+        
+        return STORES_CHOICES
+    
+    TYPE_CHOICES = [('Bourbon','Bourbon'), ('Scotch','Scotch'), ('Irish Whisky','Irish Whisky'), ('Gin', 'Gin'), ('Tequila','Tequila'), ('Vodka','Vodka'), ('All','Show All')]
+    stores = SelectField('Store Selection', choices=getStores(), default='all', validators=[DataRequired()])
+    types = SelectField('Liquor Type', choices=TYPE_CHOICES, default='bourbon', validators=[DataRequired()])
+    filterSubmit = SubmitField('Filter')
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
