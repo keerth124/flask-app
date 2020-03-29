@@ -95,3 +95,6 @@ NameError: name 'wait' is not defined
 2020-03-29 12:18:47,700 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
 2020-03-29 15:55:50,663 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
 2020-03-29 15:59:03,777 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 16:08:40,535 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 16:21:14,435 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 16:25:55,737 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]

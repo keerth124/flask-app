@@ -1,1 +1,1 @@
-FLASK_APP=flask-app.py
+FLASK_APP=main.py
