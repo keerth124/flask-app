@@ -24,7 +24,7 @@ class StoreForm(FlaskForm):
         
         return STORES_CHOICES
     
-    TYPE_CHOICES = [('Bourbon','Bourbon'), ('Scotch','Scotch'), ('Irish Whisky','Irish Whisky'), ('Gin', 'Gin'), ('Tequila','Tequila'), ('Vodka','Vodka'), ('All','Show All')]
+    TYPE_CHOICES = [('Bourbon','Bourbon'), ('Scotch','Scotch'), ('Irish Whisky','Irish Whisky'), ('Gin', 'Gin'), ('Tequila','Tequila'), ('All','Show All')]
     stores = SelectField('Store Selection', choices=getStores(), default='all', validators=[DataRequired()])
     types = SelectField('Liquor Type', choices=TYPE_CHOICES, default='bourbon', validators=[DataRequired()])
     filterSubmit = SubmitField('Filter')

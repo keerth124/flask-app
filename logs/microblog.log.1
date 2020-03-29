@@ -1,4 +1,4 @@
-2020-03-28 17:00:21,006 ERROR: Exception on /Inventory [GET] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
+2020-03-28 19:35:47,231 ERROR: Exception on /Inventory [POST] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,45 +14,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\routes.py", line 80, in inventory
-    return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON, updateTime=updateTime.completionTime, value=value)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\templating.py", line 138, in render_template
-    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\environment.py", line 930, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\environment.py", line 883, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\environment.py", line 857, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\loaders.py", line 129, in load
-    code = environment.compile(source, name, filename)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\environment.py", line 638, in compile
-    self.handle_exception(source=source_hint)
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\jinja2\_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\templates\inventory.html", line 24, in template
-    <input type="submit" value="Bourbon" name="bourbon" class= {% if value == 'bourbon' %} "btn btn-primary" {% else %} "btn btn-default" {% end if %} padding-top="5px" padding-bottom="5px">
-jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'end'. Jinja was looking for the following tags: 'endif'. The innermost block that needs to be closed is 'if'.
-2020-03-28 17:00:32,856 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 17:01:24,067 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 17:02:26,541 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 18:06:20,795 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 18:07:19,630 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 18:08:49,997 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 18:39:38,325 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 18:50:20,164 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 18:50:54,554 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 18:51:14,970 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 18:51:34,058 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 18:51:54,349 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 18:53:13,784 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 18:54:24,082 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 19:03:48,120 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 19:11:36,074 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 19:22:08,976 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 19:22:25,163 ERROR: Exception on /Inventory [POST] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
+  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\routes.py", line 69, in inventory
+    flash('Filtering on ' + form.types.data + ' at ' + storeAddress.address)
+AttributeError: 'NoneType' object has no attribute 'address'
+2020-03-28 19:37:08,846 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 19:37:18,833 ERROR: Exception on /Inventory [POST] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -68,17 +34,10 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\routes.py", line 75, in inventory
-    return render_template('inventory.html', inventory=inventory, inventoryJSON=inventoryJSON, updateTime=updateTime.completionTime, value=value, form=form)
-NameError: name 'value' is not defined
-2020-03-28 19:23:20,233 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 19:25:03,404 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 19:26:26,564 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 19:28:45,697 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 19:28:58,643 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 19:29:40,911 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 19:33:39,957 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 19:33:46,911 ERROR: Exception on /Inventory [POST] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
+  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\routes.py", line 72, in inventory
+    flash('Filtering on ' + form.types.data + ' at ' + storeAddress.address)
+AttributeError: 'NoneType' object has no attribute 'address'
+2020-03-28 19:37:58,244 ERROR: Exception on /Inventory [POST] [in c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -94,8 +53,55 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\users\sgoli\documents\flask-app\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\routes.py", line 68, in inventory
-    storeAddress = Inventory.query.filter(Inventory.store.contains(forms.stores.data)).first()
-NameError: name 'forms' is not defined
-2020-03-28 19:33:57,281 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
-2020-03-28 19:34:50,683 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+  File "C:\Users\sgoli\Documents\GitHub\flask-app\app\routes.py", line 72, in inventory
+    flash('Filtering on ' + form.types.data + ' at ' + storeAddress.address)
+AttributeError: 'NoneType' object has no attribute 'address'
+2020-03-28 19:38:49,443 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-28 19:41:06,578 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 09:22:46,948 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 09:23:15,860 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 09:23:42,866 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 09:24:18,649 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 09:30:10,560 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 09:30:17,285 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 09:36:43,297 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 09:37:20,625 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:06:12,125 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:06:27,126 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:06:32,388 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:06:34,362 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:06:36,370 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:06:38,373 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:06:40,393 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:06:42,393 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:06:44,672 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:06:47,352 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:06:49,730 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:09:10,901 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:09:18,511 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:09:21,036 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:09:23,160 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:09:25,324 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:09:27,425 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:09:29,477 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:11:00,543 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:11:07,544 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:11:09,524 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:11:11,709 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:11:13,738 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:11:15,747 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:11:17,764 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:12:36,685 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:14:27,639 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:15:14,039 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:15:51,208 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:17:00,708 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:17:24,364 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:17:52,710 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:18:12,226 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:20:14,106 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:21:19,677 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:21:24,812 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:21:26,955 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:21:29,083 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]
+2020-03-29 10:21:31,266 INFO: Microblog startup [in C:\Users\sgoli\Documents\GitHub\flask-app\app\__init__.py:51]

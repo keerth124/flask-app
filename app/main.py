@@ -9,6 +9,43 @@ from app.models import User, Post, Inventory, InventorySchema, LastUpdate, UserL
 from app.email import send_password_reset_email
 import json
 from datatables import DataTables
+import subprocess
+from subprocess import Popen, PIPE
+import abcstore
+import atexit
+from apscheduler.scheduler import Scheduler
+
+cron = Scheduler(daemon=True)
+cron.start()
+
+@cron.cron_schedule(day_of_week='mon-fri', hour='10', minute='15')
+def ABCDataUpdate():
+    # Scotch, Bourbon, Gin, Tequila, Irish Whisky
+    #urls = ["https://www.meckabc.com/Products/Product-Search?d=scotch&c=","https://www.meckabc.com/Products/Product-Search?d=bourbon&c=","https://www.meckabc.com/Products/Product-Search?d=gin&c=","https://www.meckabc.com/Products/Product-Search?d=tequila&c=", "https://www.meckabc.com/Products/Product-Search?d=Irish+Whisky&c="]
+    #urlsTest = ["https://www.meckabc.com/Products/Product-Search?d=gin&c="]
+    urls = ["https://www.google.com"]
+    executionTime = datetime.utcnow()
+    print('Starting up...... Transfer Data: ' + str(executionTime))
+    try:
+        abcstore.transferData()
+    except: 
+        print('Transfer Data Failed')
+    print('Transfer Data done at: ' + str(datetime.utcnow()) + ' Updating Inventory now...........')
+    try:
+        abcstore.updateInventory(urls, executionTime)
+    except:
+        print('Update Inventory Failed')
+    print('Inventory Data done at: ' + str(datetime.utcnow()) + ' Updating LastUpdate now...........')
+    try:
+        abcstore.updateLastUpdate(executionTime)
+    except:
+        print('Last Update Failed')
+    completeTime = datetime.utcnow()
+    timetaken = completeTime - executionTime
+    print('Complete: ' + str(completeTime) + ' took this long: ' + str(timetaken) )
+
+atexit.register(lambda: cron.shutdown(wait=False))
+
 
 @app.before_request
 def before_request():
