@@ -21,6 +21,15 @@ Load dependencies:
 pip install -r requirements.txt
 '''
 
+## Execute
+'''
+python main.py
+'''
+or
+'''
+flask run
+'''
+
 ## Set up for packaging
 '''
 pip freeze > requirements.txt
