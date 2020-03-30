@@ -20,9 +20,9 @@ pip install -r requirements.txt
 python main.py
 ```
 or
-'''
+```
 flask run
-''' 
+``` 
 
 ## Set up for packaging
 ```bash
