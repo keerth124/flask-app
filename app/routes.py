@@ -7,14 +7,7 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
     ResetPasswordRequestForm, ResetPasswordForm, StoreForm
 from app.models import User, Post, Inventory, InventorySchema, LastUpdate, UserLogins
 from app.email import send_password_reset_email
-import json
-from datatables import DataTables
-import subprocess
-from subprocess import Popen, PIPE
-import abcstore
-
-
-import atexit
+import json, abcstore, atexit
 from apscheduler.scheduler import Scheduler
 
 cron = Scheduler(daemon=True)

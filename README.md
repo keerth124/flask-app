@@ -14,6 +14,9 @@ Load dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+```bash
+pip install -r requirements.txt -t lib/
+```d
 
 ## Execute
 ```bash
